@@ -1,5 +1,8 @@
-const shoppingList = document.querySelector(".shopping-list")
-loadItems()
+const shoppingList = document.querySelector(".shopping-list");
+const shoppingForm = document.querySelector(".shopping-form");
+loadItems();
+
+shoppingForm.addEventListener("submit", handleFormSubmit);
 
 
 function loadItems() {
@@ -18,12 +21,43 @@ function loadItems() {
     }
 }
 
+function addItem(input){
+    const newItem = createListItem({
+        id: generateId(),
+        name: input.value,
+        completed:false
+    });
+    shoppingList.appendChild(newItem);
+    input.value = "";
+}
+
+function generateId(){
+    return Date.now().toString();
+}
+
+function handleFormSubmit(e){
+    e.preventDefault();
+    const input = document.getElementById("item_name");
+
+    if(input.value.trim().length === 0){
+        alert("Yeni değer giriniz")
+        return;
+    }
+    addItem(input);
+}
+
+function toggleCompleted(e){
+    const li = e.target.parentElement;
+    li.toggleAttribute("item-completed", e.target.checked);
+}
+
 function createListItem(item){
     // Checkbox
     const input = document.createElement("input");
     input.type = "checkbox";
     input.classList.add("form-check-input")
     input.checked = item.completed;
+    input.addEventListener("change", toggleCompleted)
 
     // item 
     const div = document.createElement("div");
@@ -37,6 +71,7 @@ function createListItem(item){
     // create li
     const li = document.createElement("li");
     li.className = "border rounded p-3 mb-1";
+    li.toggleAttribute("item-completed", item.completed)
 
 
     li.appendChild(input);
