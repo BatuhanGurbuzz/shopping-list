@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
-    <title>Document</title>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    />
+    <title>Shopping List</title>
+  </head>
+  <body>
     <div class="container">
-        <h1 class="text-center">
-            Shopping List
-        </h1>
+      <h1 class="text-center">Shopping List</h1>
 
-        <form class="shopping-form border rounded p-3 mb-3">
-            <div class="input-group">
-                <input type="text" name="item" id="item_name" class="form-control" placeholder="Eleman Ekle">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i></button>
-            </div>
-        </form>
+      <form class="shopping-form border rounded p-3 mb-3">
+        <div class="input-group">
+          <input
+            type="text"
+            name="item"
+            id="item_name"
+            class="form-control"
+            placeholder="Eleman Ekle"
+          />
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-plus"></i>
+          </button>
+        </div>
+      </form>
 
-        <ul class="shopping-list list-unstyled">
-           
-        </ul>
+      <div class="alert alert-danger">
+        No items
+      </div>
+
+      <div class="filter-buttons border rounded p-3 mb-3">
+        <button item-filter="all" class="btn btn-primary">All</button>
+        <button item-filter="incomplete" class="btn btn-secondary">Incomplete</button>
+        <button item-filter="completed" class="btn btn-secondary">Completed</button>
     </div>
 
+      <ul class="shopping-list list-unstyled"></ul>
 
+      <button class="btn btn-outline-danger clear">Temizle</button>
+    </div>
 
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
-</body>
+  </body>
 </html>
